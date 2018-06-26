@@ -1,0 +1,7 @@
+rm -f /u/uno/uno85c/logic/tmp/*
+rm -f /u/uno/uno85c/logic/trm/*
+rm -f /u/uno/uno85c/logic/prt/*
+rm -f /u/uno/uno85c/dino/tmp/*
+rm -f /u/uno/uno85c/dino/trm/*
+rm -f /u/uno/uno85c/dino/prt/*
+

@@ -1,0 +1,5 @@
+echo "INICIO COPIA DE DATOS BIABLE DINO" > /backup/reportes/fechaCopiaDino.log
+date >> /backup/reportes/fechaCopiaDino.log
+\cp /u/uno/uno85c/dino/datos/* /u/datosBiable/dino/
+echo "FIN DE COPIA DE DATOS BIABLE DINO" >> /backup/reportes/fechaCopiaDino.log
+date >> /backup/reportes/fechaCopiaDino.log

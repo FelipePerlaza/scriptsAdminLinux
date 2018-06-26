@@ -1,0 +1,9 @@
+echo  -e "    Ingrese el archivo a enviar:  "
+read arc
+echo -e "    ingrese ruta destino: "
+read ruta
+for i in `cat /u/procesos85/cajnu`;
+do 
+echo "--------- Actualizando   CAJA$i -------  "; 
+rcp -r $arc caja$i:$ruta
+done

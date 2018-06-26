@@ -1,0 +1,118 @@
+clear
+setterm -background blue 
+trap 'echo " Acceso Denegado Att Departamento de Sistemas Software Y Desarrollos ";' 2 3 5
+read Mensaje
+#trap 1 2 3 12 14 15
+menu()
+{
+clear
+echo " "
+echo " 		 ----------------------------------------------"
+echo "	         -     MENU DE TRANSMISION DE LA SUCURSAL     -"
+echo "		 -     	 EXPRESS    A  SERVIDOR CENTRAL       -"
+echo "		 -         SUPERINTER   SUPERMERCADOS         -"
+echo " 		 ----------------------------------------------"
+echo " "
+echo "		 ----------------------------------------------"	    
+echo "		 - > 1. CONECTAR CON CENTRAL ( CONTINGENCIA )  -"
+echo "		 - > 2. ENVIAR PDV			       -"
+echo "		 - > 3. BORRAR PDV			       -"
+echo "		 - > 4. EN DESARROLLO			       -"
+echo "		 - > 5. EN DESARROLLO			       -"
+echo "		 - > 6. EN DESARROLLO		               -"
+echo "		 - > 7. SALIR 				       -"
+echo "		 ----------------------------------------------"
+echo " "
+echo -e "		OPCION....: # \c  "
+read la
+}
+enviar_pdv()
+{
+clear
+	echo "LISTANDO LOS ARCHIVOS EXISTENTES PARA TRANSMISION DE PDV "
+	cd /u/uno/uno85c/mcinter/trm
+	ls -sh *.PV*
+#       gzip -9 002*.PV*
+	rcp -r 006*.PV* Smercainter:/u/uno/uno85c/mcinter/trm
+	rsh -l root Smercainter /usr/bin/per
+#       rsh -l root Servidor_Central /usr/bin/descomprimir_trm
+#	telnet -l descomprimir_trm Smercainter
+
+echo "EL PROCESO TERMINO EXITOSAMENTE"
+echo "POR FAVOR RECEPCIONE LOS ARCHIVOS ENVIADOS "
+echo "GENERE LAS RESPECTIVAS VERIFICACIONES "
+echo "CUALQUIER DUDA O INQUIETUD FAVOR COMUNICARSE CON EL DEPARTAMENTO DE
+SISTEMAS,SOFTWARE Y DESARROLLO DE SUPERINTER SUPERMERCADOS"
+echo "GRACIAS"
+echo -e "Presione ENTER Para Continuar ....... \c"
+read key
+
+
+
+
+menu
+}
+borrar()
+{
+cd /u/uno/uno85c/mcinter/trm
+rm -rf 006*.PV*
+menu
+}
+
+enviar_clientes()
+{
+clear
+#	echo "LISTANDO LOS ARCHIVOS EXISTENTES PARA TRANSMISION DE CLIENTES DE CONTADO"
+#	cd /u/uno/uno72/guadalupe/trm
+#	ls -sh *.CL*
+#	gzip -9 002*.CL*
+#	chmod 777 *
+#	scp -r 002*.CL* guadalupe@Servidor_Central:/u/uno/uno72/inters/trm
+#	telnet Servidor_Central -l descomprimir_trm
+#echo "EL PROCESO TERMINO EXITOSAMENTE"
+#echo "POR FAVOR RECEPCIONE LOS ARCHIVOS ENVIADOS "
+#echo "GENERE LAS RESPECTIVAS VERIFICACIONES "
+#echo "CUALQUIER DUDA O INQUIETUD FAVOR COMUNICARSE CON EL DEPARTAMENTO DE 
+#SISTEMAS,SOFTWARE Y DESARROLLO DE SUPERINTER SUPERMERCADOS"
+#echo "GRACIAS"
+#echo -e "Presione ENTER Para Continuar ....... \c"
+#read key
+menu
+}
+
+borrar_clientes()
+{
+#cd /u/uno/uno72/guadalupe/trm
+#rm -rf 002*.LC*
+menu
+}
+
+
+conectar()
+{
+#ifup ppp1
+menu
+}
+
+desconectar()
+{
+#ifdown ppp1
+menu
+}
+
+
+
+clear
+menu
+while :
+do
+  case $la  in
+	1)  conectar 	;;
+	2)  enviar_pdv 	;;
+	3)  borrar	;;
+	7)  clear
+            trap 1 2 3
+	    exit 0	;;
+	*) menu 	;;
+  esac
+done

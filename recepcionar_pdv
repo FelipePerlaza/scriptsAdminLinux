@@ -1,0 +1,278 @@
+trap 'echo Acceso Denegado Att Departamento de Sistemas Software Y Desarrollos;e
+xit' 2 3 5
+
+setterm -background blue
+trap 1 2 3 12 14 15
+menu()
+{
+clear
+echo " "
+echo "     -------------------------------------------------------"
+echo "    |  MENU PARA RECEPCION DE PDV SUPERINTER SUPERMERCADOS  |"
+echo "    |         PROCESO MEDIANTE EL CUAL SE ACTUALIZAN        |"
+echo "    |               LOS HISTORICOS DE VENTAS                |"
+echo "    |              SUPERINTER   SUPERMERCADOS               |"
+echo "     -------------------------------------------------------"
+echo "            -----------------------------------------"
+echo "           | >   1. SILOE         > 14. ACOPI        |"
+echo "           | >   2. GUADALUPE     > 15. SUPEROUTLET  |"
+echo "           | >   3. MELENDEZ      > 16. POBLADO      |"
+echo "           | >   4. POPULAR       > 17. STAELENA     |"
+echo "           | >   5. POPALA        > 18. FLORALIA     |"
+echo "           | >   6. NORTE         > 19. GUAYACANES   |"
+echo "           | >   7. AMERICAS      > 20. CENTRO       |"
+echo "           | >   8. HACIENDA      > 21. UNION        |"
+echo "           | >   9. PUNTO VERDE   > 22. LA MARIA     |"
+echo "           | >  10. JAMUNDI       > 23. PEREIRA C    |"
+echo "           | >  11. DOSQUEBRADAS  > 24. LUNA         |"
+echo "           | >  12. CARTAGO       > 25. LA TIENDA    |"
+echo "           | >  13. CALARCA       > 26. LA COMETA    |"
+echo "           | >                    > 27. LA CASTILLA  |"
+echo "           |                                         |"
+echo "           |                                         |"
+echo "           |              > 28. SALIR                |"
+echo "            -----------------------------------------"
+echo -e "                    OPCION..:#\c  "
+read la
+}
+siloe()
+{
+#/u/procesos.oscar/menurecepsiloe
+telnet -l transmitir_pdv Serinter1
+menu
+}
+guadalupe()
+{
+#/u/procesos.oscar/menurecepguada
+telnet -l transmitir_pdv Serguada1
+menu
+}
+
+melendez()
+{
+#/u/procesos.oscar/menurecepmelen
+telnet -l transmitir_pdv Melendez
+menu
+menu
+}
+
+popular()
+{
+#/u/procesos.oscar/menureceppopu
+telnet -l transmitir_pdv Serpopu
+menu
+}
+
+popala()
+{
+#/u/procesos.oscar/menureceppopa
+telnet -l transmitir_pdv Spopala
+menu
+}
+
+norte()
+{
+#/u/procesos.oscar/menurecepnorte
+telnet -l transmitir_pdv Snorte
+menu
+}
+
+americas()
+{
+#/u/procesos.oscar/menurecepamericas
+telnet -l transmitir_pdv Samericas
+menu
+}
+
+hacienda()
+{
+#/u/procesos.oscar/menurecephacienda
+telnet -l transmitir_pdv Hacienda
+menu
+}
+
+
+puntoverde()
+{
+#/u/procesos.oscar/menureceppuntoverde
+telnet -l transmitir_pdv  Puntoverde
+menu
+}
+
+
+dosquebradas()
+{
+#/u/procesos.oscar/menurecepdosquebradas
+telnet -l transmitir_pdv Sdosquebradas
+menu
+}
+
+
+jamundi()
+{
+#/u/procesos.oscar/menurecepjamundi
+telnet -l transmitir_pdv Sjamundi
+menu
+}
+
+
+cartago()
+{
+#/u/procesos.oscar/menurecepcartago
+telnet -l transmitir_pdv Scartago
+menu
+}
+
+
+calarca()
+{
+#/u/procesos.oscar/menurecepcalarca
+telnet -l transmitir_pdv Scalarca
+menu
+}
+
+acopi()
+{
+#/u/procesos.oscar/menurecepacopi
+telnet -l transmitir_pdv Sacopi
+menu
+}
+
+
+superoutlet()
+{
+#/u/procesos.oscar/menurecepsuperoutlet
+telnet -l transmitir_pdv Soutlet
+menu
+}
+
+poblado()
+{
+#/u/procesos.oscar/menureceppoblado
+telnet -l transmitir_pdv Spoblado
+menu
+}
+
+staelena()
+{
+#/u/procesos.oscar/menurecepstaelena
+telnet -l transmitir_pdv Staelena
+menu
+}
+
+floralia()
+{
+#/u/procesos.oscar/menurecepfloralia
+telnet -l transmitir_pdv Sfloralia
+menu
+}
+
+guayacanes()
+{
+#/u/procesos.oscar/menurecepguayacanes
+telnet -l transmitir_pdv Sguayacanes
+menu
+}
+
+centro()
+{
+#/u/procesos.oscar/menurecepcentro
+telnet -l transmitir_pdv Scentro
+menu
+}
+
+union()
+{
+#/u/procesos.oscar/menurecepunion
+telnet -l transmitir_pdv Sunion
+menu
+}
+
+maria()
+{
+#/u/procesos.oscar/menurecepmaria
+telnet -l transmitir_pdv Smaria
+menu
+}
+
+
+pereira()
+{
+telnet -l transmitir_pdv SpereiraCentro
+menu
+}
+
+
+luna()
+{
+telnet -l transmitir_pdv Sluna
+menu
+}
+
+
+tienda()
+{
+telnet -l transmitir_pdv Stienda
+menu
+}
+
+
+cometa()
+{
+telnet -l transmitir_pdv Scometa
+menu
+}
+
+
+
+castilla()
+{
+telnet -l transmitir_pdv Scastilla
+menu
+}
+
+
+
+
+
+
+clear
+menu
+while :
+do
+  case $la  in
+	1) siloe 	;;
+	2) guadalupe 	;;
+	3) melendez	;;
+	4) popular 	;;
+        5) popala	;;
+	6) norte	;;
+	7) americas	;;
+	8) hacienda	;;
+	9) puntoverde	;;
+	10) jamundi	;;
+	11) dosquebradas	;;
+	12) cartago	;;
+	13) calarca	;;
+	14) acopi	;;
+	15) superoutlet	;;
+	16) poblado	;;
+	17) staelena	;;
+	18) floralia	;;
+	19) guayacanes	;;
+	20) centro	;;
+	21) union	;;
+	22) maria	;;
+	23) pereira	;;
+	24) luna	;;
+	25) tienda	;;
+	26) cometa	;;
+	27) castilla	;;
+	28)  clear
+            trap 1 2 3
+	    exit 0	;;
+	*) menu 	;;
+  esac
+done
+
+

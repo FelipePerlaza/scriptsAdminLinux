@@ -1,0 +1,8 @@
+A=`date "+%m%d%k%M%S"`
+mkdir /u/uno/uno72/backup/`echo "cnf$A"`
+cd /u/uno/uno72/mcinter/
+cp * /u/uno/uno72/backup/`echo "cnf$A"`/
+cd /u/uno/uno72/mcinter/cnf/
+cp * /u/uno/uno72/mcinter/
+/usr/bin/per
+echo "El directorio donde seguado los CNF malos es : `echo "cnf$A"`"

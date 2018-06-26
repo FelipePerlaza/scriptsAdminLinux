@@ -1,0 +1,7 @@
+
+for i in `cat /u/procesos85/cajnu`;
+do 
+echo " --------VERIFICANDO CAJA$i--------- "; 
+ping -c1 -L -t1 caja$i;echo " "; 
+done
+

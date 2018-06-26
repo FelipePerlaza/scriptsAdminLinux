@@ -1,0 +1,4 @@
+cd /u/public/copiaSeguridad/
+rm -rf uno.tar.gz11*
+exit
+

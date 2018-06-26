@@ -1,0 +1,68 @@
+clear
+
+menu()
+{
+clear
+echo " "
+echo " "
+echo "		      MENU PRINCIPAL DE ADMINISTRACION "
+echo "		         DE PROCESOS DEL SISTEMA UNO "
+echo " "
+echo " "
+echo " "
+echo "		  1.  MENU DE VERIFICACION DE COPIAS "
+echo "		  2.  MENU DE COPIAS DE SEGURIDAD "
+echo "		  3.  MENU DE PROCESOS ESPECIALES "
+echo "		  4.  MENU DE ADMINTRAS CAJAS "
+echo "		  5.  MENU DE INTERFAS DE SUCUSAL A PRINCIPAL "
+echo "		  6.  SALIR "
+echo " "
+echo " "
+echo -e "		OPCION....: # \c  "
+read la
+}
+
+verifica() 
+{
+/u/procesos/menu1
+menu
+}
+
+copias() 
+{
+/u/procesos/menu2
+menu
+}
+
+procesos() 
+{
+/u/procesos/menu3
+menu
+}
+
+cajas() 
+{
+/u/procesos/menu4
+menu
+}
+
+interfas() 
+{
+/u/procesos/menu5
+menu
+}
+
+
+menu
+while :
+do
+  case $la  in
+	1) verifica 		;;
+	2) copias 		;;
+	3) procesos 		;;
+	4) cajas 		;;
+	5) interfas 		;;
+	6) exit	 		;;
+	*) menu 		;;
+  esac
+done

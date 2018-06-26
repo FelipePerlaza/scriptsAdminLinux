@@ -1,0 +1,5 @@
+echo "INICIO COPIA DATOS BIABLE LOGIC" > /backup/reportes/fechaCopiaLogic.log
+date >> /backup/reportes/fechaCopiaLogic.log
+\cp /u/uno/uno85c/logic/datos/* /u/datosBiable/logic/
+echo "FIN COPIA DE DATOS BIABLE LOGIC" >> /backup/reportes/fechaCopiaLogic.log
+date >> /backup/reportes/fechaCopiaLogic.log

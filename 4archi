@@ -1,0 +1,25 @@
+clear
+unalias cp
+for i in `cat /u/procesos85/cajnu`;
+do 
+echo "--------- COPIA DE ARCHIVOS CATALOGOS VITALES EN LA  CAJA$i -------  "; 
+cd /u/uno/uno85c/fernando/datos/
+cp CMLINEAS.DAT CMGRU* CMCODBAR.DAT CMLIPRE1.DAT CMLIPRE2.DAT CMITEMS.DAT CMITEMSH.DAT /tmp/
+cd /tmp/
+echo " copiando CMLINEAS.DAT "
+/usr/bin/scp  CMLINEAS.DAT caja$i:/u/uno/uno85c/local/datos/
+echo " copiando CMGRUPOS.DAT "
+/usr/bin/scp  CMGRU* caja$i:/u/uno/uno85c/local/datos/
+echo " copiando CMCODBAR.DAT "
+/usr/bin/scp  CMCODBAR.DAT caja$i:/u/uno/uno85c/local/datos/
+echo " copiando CMLIPRE1.DAT "
+/usr/bin/scp  CMLIPRE1.DAT caja$i:/u/uno/uno85c/local/datos/
+echo " copiando CMLIPRE2.DAT "
+/usr/bin/scp  CMLIPRE2.DAT caja$i:/u/uno/uno85c/local/datos/
+echo " copiando CMITEMS.DAT "
+/usr/bin/scp  CMITEMS.DAT caja$i:/u/uno/uno85c/local/datos/
+echo " copiando CMITEMSH.DAT "
+/usr/bin/scp CMITEMSH.DAT caja$i:/u/uno/uno85c/local/datos/
+/usr/bin/rsh -l root caja$i /bin/chmod -R 777 /u/uno/uno85c/local/
+/usr/bin/rsh -l root caja$i /bin/chown -R bin:bin  /u/uno/uno85c/local/
+done

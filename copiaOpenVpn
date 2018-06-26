@@ -1,0 +1,8 @@
+echo "###INICIO DE COPIA DE SEGURIDAD OPENVPN###" > /backup/reportes/fechaVpn.log
+date >> /backup/reportes/fechaVpn.log
+cd /etc
+tar -czvf /backup/openVpn/openVpn.tar.gz openvpn
+echo "###FIN DE COPIA DE SECURIDAD OPENVPN###" >>/backup/reportes/fechaVpn.log
+date >> /backup/reportes/fechaVpn.log
+exit
+

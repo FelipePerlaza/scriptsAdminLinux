@@ -1,0 +1,109 @@
+clear
+menu()
+{
+clear
+echo "	      -------------------------------------------------"
+echo "	     |	 	 MENU    DE    VERIFICACION 	       |"
+echo "	     |	          DE PROCESOS DE SEGURIDAD 	       |"
+echo "	     |		        DINOAUTOS        	       |"
+echo " 	      ------------------------------------------------- "
+echo " "
+echo " 	       -----------------------------------------------"
+echo "	      |	>  1. VER FECHA DE COPIA DE SEGURIDAD	      |"
+echo "	      |	>  2. VER FECHA DE COPIA OPENVPN              |"
+echo "	      |	>  3. VER TIEMPO DE COPIA MIRROR  	      |"
+echo "	      |	>  4. VER TIEMPO DE ACTUALIAZCION BIABLE      |"
+echo "	      |	>  5. VER ARCHIVOS ENVIADOS A CAJAS 	      |"
+echo "	      |	>  6. VER NUMERO DE ARCHIVOS ENVIADOS A CAJAS |"
+echo "	      |	>  7. VERIFICAR CRECIMIENTO DE ARCHIVOS       |"
+echo "	      |       CMACU*.DAT,CMMOVIN.DAT, Y   	      |" 	
+echo "	      |	      ESPACIO EN DISCO DURO.		      |"		
+echo "	      |						      |"
+echo "	      | >  8. SALIR				      |"	
+echo " 	       -----------------------------------------------"
+echo " "
+echo -e " 	 OPCION..:#\c "
+read la
+}
+
+fecsegu()
+{
+tail -n12  /backup/reportes/fechaCopia.log
+echo -e "Oprima enter para continuar ....... \c"
+read key
+menu
+}
+copiasAlternativas()
+{
+tail -n12  /backup/reportes/fechaVpn.log
+echo -e "Oprima enter para continuar ....... \c"
+read key
+menu
+}
+tiempmirror() 
+{ 
+tail -n12  /backup/reportes/fechaMirror.log
+echo -e "Oprima enter para continuar ....... \c"
+read key
+menu 
+} 
+filecinta() 
+{  
+more /backup/reportes/fechaAutoDino.log
+more /backup/reportes/fechaAutoLogic.log
+echo -e "Oprima enter para continuar ...... \c"
+read key
+menu 
+} 
+filecajas() 
+{ 
+more /u/reportes/logfile
+menu 
+} 
+nofilecajas() 
+{ 
+tail -n12  /u/reportes/archcajas
+echo -e "Oprima enter para continuar ....... \c"
+read key
+menu 
+}
+verifcrecim()
+{
+clear
+date
+
+echo "CRECIMIENTO DE DIRECTORIO DINO"
+
+ls -sh /u/uno/uno85c/dino/datos/CMACU*.* 
+ls -sh /u/uno/uno85c/dino/datos/CMMOVIN.DAT
+ls -sh /u/uno/uno85c/dino/datos/CGMOV.DAT
+
+echo "CRECIMIENTO DE DIRECTORIO LOGIC"
+
+ls -sh /u/uno/uno85c/logic/datos/CMACU*.*
+ls -sh /u/uno/uno85c/logic/datos/CMMOVIN.DAT
+ls -sh /u/uno/uno85c/logic/datos/CGMOV.DAT
+echo -e "Presione Enter Para Verificar El Espacio En Disco .....\c"
+read key
+df -h 
+echo -e "Presione Enter Para Salir........\c"
+read key
+menu
+}
+
+
+menu
+while :
+do
+  case $la  in
+	1) fecsegu 	;;
+	2) copiasAlternativas;;
+	3) tiempmirror 	;;
+	4) filecinta 	;;
+	5) filecajas 	;;
+	6) nofilecajas 	;;
+	7) verifcrecim	;;
+	8) exit 	;;
+	*) menu 	;;
+  esac
+done

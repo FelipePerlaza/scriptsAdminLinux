@@ -1,0 +1,6 @@
+for i in `cat /u/procesos85/cajnu`;
+do 
+echo "--------- Apagando   CAJA$i -------  "; 
+/usr/bin/rsh -l root caja$i /sbin/shutdown -g0 -y 
+done
+

@@ -1,0 +1,8 @@
+clear
+for i in `cat /u/procesos85/cajnu`;
+do 
+echo "--------- LIMPIANDO  CAJA$i -------  "; 
+/usr/bin/rsh -l root caja$i /bin/rm -f /u/uno/uno85c/local/trm/* 
+/usr/bin/rsh -l root caja$i /bin/rm -f /u/uno/uno85c/local/tmp/* 
+/usr/bin/rsh -l root caja$i /bin/rm -f /u/uno/uno85c/local/prt/* 
+done

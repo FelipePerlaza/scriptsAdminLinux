@@ -1,0 +1,8 @@
+A=`date "+%m%d%k%M%S"`
+mkdir /u/uno/uno72/backup/`echo "pdvtem$A"`
+cd /u/uno/uno72/mcinter/datos/
+cp -xrfv CMPDVTE* /u/uno/uno72/backup/`echo "pdvtem$A"`/
+cd /u/uno/uno72/mcinter/ini/
+cp -xrfv CMPDVTE* /u/uno/uno72/mcinter/datos/
+/usr/bin/per
+echo "El directorio donde seguado los PDVTEM malos es : `echo "pdvtem$A"`"

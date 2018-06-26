@@ -1,0 +1,37 @@
+clear
+echo " Inicio de actualizacion de las cajas " >/u/reporte/logtime
+date "+%B %d %Y  %k:%M:%S" >>/u/reporte/logtime
+echo  "" >>/u/reporte/logtime
+date >/u/reporte/logfile
+cona=0
+
+echo " Programa para la actualizacion de sucurdales"
+ 	     for file in `cat /u/procesos85/ListaSucursales`
+              do
+                    cona=`expr $cona + 1`
+                    arcca=`expr $arcca + 1`
+ 		    echo "Copiando   $file  a S.inter Express "
+		    rcp -r $file SerAlinstante:/u/uno/uno85c/local/datos/
+ 		    echo "Copiando  $file a S.inter Express " >>/u/reporte/logfile
+              done
+	     echo  " Hora en que termina SerExpress " >>/u/reporte/logtime
+             date "+%k:%M:%S" >>/u/reporte/logtime
+	     echo  "" >>/u/reporte/logtime
+	     echo  "" >>/u/reporte/logtime
+echo " Termina la actualizacion  de Superinter Express " >>/u/reporte/logtime
+date "+%B %d %Y  %k:%M:%S" >>/u/reporte/logtime
+echo  "" >>/u/reporte/logtime
+clear
+echo "" >/u/reporte/archcajas
+echo "" >>/u/reporte/archcajas
+echo "" >>/u/reporte/archcajas
+echo "" >>/u/reporte/archcajas
+echo " 	
+echo " 		Archivos por sucursal       : $arcca " >>/u/reporte/archcajas
+echo " 		Total archivos enviados : $cona " >>/u/reporte/archcajas
+echo "" >>/u/reporte/archcajas
+echo "" >>/u/reporte/archcajas
+echo "" >>/u/reporte/archcajas
+echo "" >>/u/reporte/archcajas
+echo "" >>/u/reporte/archcajas
+echo "" >>/u/reporte/archcajas

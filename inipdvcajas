@@ -1,0 +1,9 @@
+clear
+for i in `cat /u/procesos/cajnu`;
+do 
+echo "--------- INICIALIZANDO CMPDV DE LA  CAJA$i -------  "; 
+cd /u/uno/uno72/mcinter/ini/
+#rcp  CMPDV* caja$i:/u/uno/uno72/local/datos/
+rsh -l root caja$i /bin/chmod -R 777 /u/uno
+rsh -l root caja$i /bin/chown -R bin:bin  /u/uno
+done

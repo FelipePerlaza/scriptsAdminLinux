@@ -1,0 +1,143 @@
+clear
+
+menu()
+{
+clear
+echo "	      ---------------------------------------------------------------"
+echo "	     |	      	     	MENU DE ADMINISTRAR CAJAS    		     |"
+echo "	     |			 SUPERMERCADOS LA SEXTA 		     |"
+echo " 	      ---------------------------------------------------------------"
+echo " "
+echo " "
+echo " 	      ---------------------------------------------------------------"
+echo "	     | 	> 1. MONITOREAR CAJAS 					     |"
+echo "	     |	> 2. USUARIOS Y NFS DE CAJAS 				     |"
+echo "	     |	> 3. ACTUALIZAR CATALOGOS EN UNA CAJA EN ESPECIAL 	     |"
+echo "	     |	> 4. ACTUALIZAR CATALOGOS EN TODAS LAS CAJAS 		     |"
+echo "	     |	> 5. LIMPIAR ARCHIVOS TEMPORALES DE CAJAS 		     |"
+echo "	     |	> 6. COPIAR ARCHIVOS VITALES PARA FACTURACION LOCAL DE CAJAS |"
+echo "	     |	> 7. TRAER ARCHIVOS DE ACUMULACION LOCAL DE CAJAS	     |"
+echo "	     |	> 8. REINICIAR CAJAS 					     |"
+echo "	     |	> 9. APAGAR CAJAS 					     |"
+echo "	     |	> 10. SALIR 						     |"
+echo " 	      ---------------------------------------------------------------" 
+echo " "
+echo -e "	OPCION..:#\c  "
+read la
+}
+
+chkcaja() 
+{
+echo " CHEQUEAR CAJAS SI ESTAN PRENDIDAS Y/O EN RED  "
+/u/procesos85/chkcajas
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+user() 
+{
+echo " USUARIOS DE CAJAS  "
+/u/procesos85/usercajas
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+cajaespe()  
+{
+echo "  "
+/u/procesos85/actcaja
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+todascaja() 
+{
+echo " ACTUALIZACION DE CAJAS  "
+/u/procesos85/actcajmanual
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+cafete() 
+{
+echo " ACTUALIZACION DE CAFETERIA "
+/u/procesos85/acteugenio
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+archi() 
+{
+echo " ENVIA ARCHIVO O DIRECTORIO A TODAS LAS CAJAS "
+/u/procesos85/enviall
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+limca() 
+{
+echo " LIMPIA TEMPORALES DE LAS CAJAS "
+/u/procesos85/limcajas
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+inipdv() 
+{
+echo " INICIALIZA LOS PDV DE CAJAS "
+/u/procesos85/inipdvcajas
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+vital()
+{
+echo " COPIAR ARCHIVOS VITALES PARA FACTURACION LOCAL "
+/u/procesos85/4archi
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+reci()
+{
+echo " TRAER ARCHIVOS DE ACUMULACION LOCAL "
+/u/procesos85/recepcion
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+reini() 
+{
+echo " REINICIA TODAS LAS CAJAS "
+/u/procesos85/reinicajas
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+apa()
+{
+echo " APAGA TODAS LAS CAJAS "
+/u/procesos85/apacajas
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+
+
+menu
+while :
+do
+  case $la  in
+	1) chkcaja 		;;
+	2) user 		;;
+	3) cajaespe 		;;
+	4) todascaja 		;;
+	5) limca   	   	;;
+	6) vital   	   	;;
+	7) reci   	   	;;
+	8) reini   	   	;;
+	9) apa		   	;;
+	10) exit	 	;;
+	*) menu 		;;
+  esac
+done

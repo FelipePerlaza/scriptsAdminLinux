@@ -1,0 +1,18 @@
+for i in `cat /u/procesos/cajnu`;
+do 
+clear
+echo "**           --------- USUARIO DE LA CAJA$i -------      ** "; 
+echo " "
+echo " "
+rsh -l root caja$i /usr/bin/w 
+echo "**           --------- FILESYSTEM  DE LA CAJA$i -------      ** "; 
+echo " "
+echo " "
+rsh -l root caja$i /bin/df
+echo " "
+echo " "
+echo " "
+echo " Precione enter para continuar.................. "
+read key
+done
+

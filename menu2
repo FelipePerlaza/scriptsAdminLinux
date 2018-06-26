@@ -1,0 +1,72 @@
+clear
+
+menu()
+{
+clear
+echo "		----------------------------------------------"
+echo "	       |	  MENU DE COPIAS DE SEGURIDAD         |"
+echo "	       |	    SUPERMERCADO LA SEXTA	      |"
+echo " 		----------------------------------------------"
+echo " "
+echo " "
+echo " "
+echo " 		----------------------------------------------"
+echo "	       | > 1. COPIA DE SEGURIDAD A CINTA	      |"
+echo "	       | > 2. COPIA ESPEJO DE LOS DATOS Y CNF (mirror)|"
+echo "	       | > 3. COPIA DEL DIRECTORIO DATOS	      |"
+echo "	       | > 4. ELIMINAR COPIA DEL DIRECTORIO DATOS     |"
+echo "	       | > 5. SALIR 				      |"
+echo " 		----------------------------------------------"
+echo " "
+echo -e "    	 OPCION..:#\c  "
+read la
+}
+copcinta() 
+{ 
+echo " INCIANDO COPIA DE SEGURIDAD "
+tar -cvf /dev/st0 /home /u/procesos /u/procesos85 /u/reporte /u/uno /u/backup
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+} 
+mirror() 
+{ 
+echo " INCIANDO COPIA DE SEGURIDAD ESPEJO "
+cp -xrfv /u/uno/uno72/mcinter /u/backup/comercial
+cp -xrfv /u/uno/uno50/mcinter /u/backup/contabilidad
+cp -xrfv /u/uno/uno85c/mcinter /u/backup/mercainter85c
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+} 
+copdir() 
+{ 
+echo " INCIANDO COPIA DE SEGURIDAD DEL DIRECTORIO DATOS"
+mkdir /u/uno/uno85c/backup/intdatt
+cd /u/uno/uno85c/mcinter/datos/
+cp -xrfv *.DAT /u/uno/uno85c/backup/intdatt/
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+} 
+deldir() 
+{ 
+echo " ELIMINANDO COPIA DE SEGURIDAD DEL DIRECTORIO DATOS"
+cd /u/uno/uno85c/backup/
+rm -rf intdatt
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+menu
+while :
+do
+  case $la  in
+	1) copcinta	;;
+	2) mirror   	;;
+	3) copdir   	;;
+	4) deldir   	;;
+	5) exit 	;;
+	*) menu 	;;
+  esac
+done

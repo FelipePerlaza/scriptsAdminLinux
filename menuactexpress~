@@ -1,0 +1,96 @@
+trap 'echo Acceso Denegado Att Departamento de Sistemas Software Y Desarrollos;e
+xit' 2 3 5
+
+trap 1 2 3 12 14 15
+menu()
+{
+clear
+echo " "
+echo "		-----------------------------------------------------"
+echo "	       |	 MENU PARA ACTUALIZACION DE CATALOGOS 	     |"
+echo "	       |	              EXPRESS 	 	             |"
+echo " 		-----------------------------------------------------"
+echo " "
+echo " 		      -----------------------------------------"
+echo "		     | >  1. CONECTAR ( CONTINGENCIA ) 	       |"
+echo "		     | >  2. ENVIAR ITEMS,LINEAS,CRITERIOS,    |"
+echo "		     |	     LISTAS DE PRECIOS ACTUALIZADAS    |"
+echo "		     | >  3. BORRAR ARCHIVOS GENERADOS 	       |"
+echo "		     | >  4. RECEPCIONAR LISTAS DE PRECIOS     |"
+echo "		     |       SUCURSAL GUADALUPE ---> CENTRAL   |"
+echo "		     | >  5. RECEPCIONAR CLIENTES DE CONTADO   |"
+echo "		     | >  6. SALIR 			       |"
+echo " 		      -----------------------------------------"
+echo " "
+echo -e "		OPCION....: # \c  "
+read la
+}
+traer()
+{
+clear
+	echo "LISTANDO LOS ARCHIVOS PARA ACTUALIZACION DE CATALOGOS EXPRESS"
+	echo "ITEMS,LINEAS,CRITERIOS,LISTAS_DE_PRECIOS_ACTUALIZADAS,KITS,GRUPOS_IMPUESTOS".
+	cd /u/uno/uno72/mcinter/trm
+	chmod 777 * 
+	ls -sh 002*.IT* *.TE* 002*.LP* 002*.CL*
+	rcp -r 002*.IT* *.TE* 002*.LP* 002*.CL* SerExpress:/u/uno/uno72/mcinter/trm
+        cd /u/uno/uno72/mcinter/datos
+        rcp -r CMCRICLA.DAT CMLINEAS.DAT CMKITS* CMGRUPOS.DAT UNZONAS.DAT SerExpress:/u/uno/uno72/mcinter/datos
+	rsh -l root SerExpress /usr/bin/per
+	cd /u/uno/uno72/mcinter/trm
+	chmod 777 * 
+	ls -sh 003*.IT* *.TE* 003*.LP* 003*.CL*
+	rcp -r 003*.IT* *.TE* 003*.LP* 003*.CL* SerAlinstante:/u/uno/uno72/mcinter/trm
+        cd /u/uno/uno72/mcinter/datos
+	rcp -r CMCRICLA.DAT CMLINEAS.DAT CMKITS* CMGRUPOS.DAT UNZONAS.DAT SerAlinstante:/u/uno/uno72/mcinter/datos
+	rsh -l root SerAlinstante /usr/bin/per
+setterm -background red
+	echo "EL PROCESO TERMINO EXITOSAMENTE"
+	echo "POR FAVOR RECEPCIONE LOS ARCHIVOS ENVIADOS" 
+	echo "GENERE LAS RESPECTIVAS VERIFICACIONES"
+	echo "CUALQUIER DUDA O INQUIETUD FAVOR COMUNICARSE CON EL DEPARTAMENTO DE SISTEMAS" 
+	echo "SOFTWARE Y DESARROLLO DE SUPERINTER SUPERMERCADOS"
+	echo "GRACIAS"
+	echo -e "Presione ENTER Para Continuar ....... \c"
+	read key 
+
+menu
+}
+borrar()
+{
+rm -r /u/uno/uno72/mcinter/trm/002*.IT*
+rm -r /u/uno/uno72/mcinter/trm/*.TE*
+rm -r /u/uno/uno72/mcinter/trm/002*.LP*
+rm -r /u/uno/uno72/mcinter/trm/*.CL*
+menu
+}
+
+conectar()
+{
+
+menu
+}
+
+recepcionar()
+{
+cd /u/uno/uno72/mcinter/trm/
+rcp SerExpress:/u/uno/uno72/mcinter/trm/*.LP* .
+per
+menu
+}
+
+
+menu
+while :
+do
+  case $la  in
+	1)  conectar 	;;
+	2)  traer 	;;
+	3)  borrar	;;
+	4)  recepcionar	;;
+	6)  clear
+            trap 1 2 3
+	    exit 0	;;
+	*) menu 	;;
+  esac
+done

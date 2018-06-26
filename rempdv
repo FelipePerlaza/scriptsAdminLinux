@@ -1,0 +1,8 @@
+A=`date "+%m%d%k%M%S"`
+mkdir /u/uno/uno72/backup/`echo "pdv$A"`
+cd /u/uno/uno72/mcinter/datos/
+cp -xrfv CMPDV* /u/uno/uno72/backup/`echo "pdv$A"`/
+cd /u/uno/uno72/mcinter/ini/
+cp -xrfv CMPDV* /u/uno/uno72/mcinter/datos/
+/usr/bin/per
+echo "El directorio donde seguado los PDV malos es : `echo "pdv$A"`"

@@ -1,0 +1,75 @@
+clear
+
+menu()
+{
+clear
+echo " 	      ---------------------------------------------------"	
+echo "	     |	          MENU DE PROCESOS ESPECIALES 		 |"
+echo "	     |		     SUPERINTER  GUADALUPE		 |"
+echo " 	      ---------------------------------------------------"
+echo " "
+echo " 	       -------------------------------------------------"
+echo "	      | >  1.  COPIAR CNF 			        |"
+echo "	      |	>  2.  COPIAR PDV 			        |"
+echo "	      |	>  3.  COPIAR PDV TEMPORALES		        |"
+echo "	      |	>  4.  LIMPIAR ARCHIVOS TEMPORALES DEL SERVIDOR |"
+echo "	      |	>  6.  REINICIAR (Network Files System )        |"
+echo "	      |	>  7.  SALIR				        |"
+echo " 	       -------------------------------------------------"
+echo " "
+echo -e "         OPCION..:#\c  "
+read la
+}
+cnf() 
+{ 
+echo " INCIANDO COPIA DE SEGURIDAD DE LOS CNF "
+/u/procesos/remcnf
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+} 
+pdv() 
+{ 
+echo " INCIANDO COPIA DE SEGURIDAD DE LOS PDV"
+/u/procesos/rempdv
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+} 
+file() 
+{ 
+echo " REINICIANDO LOS SERVICIOS DE RED PARA LAS CAJAS "
+/u/procesos/renfs
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+temp()
+{
+echo " INCIANDO COPIA DE SEGURIDAD DE LOS PDV TEMPORALES"
+/u/procesos/rempdvtem
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+limpi()
+{
+echo "  LIMPIANDO ARCHIVOS TEMPORALES DEL SERVIDOR"
+/u/procesos/limpiar
+echo -e "  Oprima enter para continuar \c "
+read key
+menu
+}
+menu
+while :
+do
+  case $la  in
+	1) cnf 		;;
+	2) pdv   	;;
+	3) temp   	;;
+	4) limpi   	;;
+	6) file   	;;
+	7) exit 	;;
+	*) menu 	;;
+  esac
+done

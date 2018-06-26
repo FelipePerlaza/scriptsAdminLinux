@@ -1,0 +1,5 @@
+RUNPATH=/u/uno/uno85c.obj:/u/uno/uno85c.obj/formatos
+TERMINFO=/usr/local/terminfo
+export RUNPATH
+export TERMINFO
+runcobol PRCM0670  a=GASES01 -C terminfo.cfg 

@@ -1,0 +1,85 @@
+clear
+setterm -background red
+trap 'echo " Acceso Denegado Att Departamento de Sistemas Software Y Desarrollos ";' 2 3 5
+menu()
+{
+clear
+echo " "
+echo " 	       =================================================="	
+echo "	      |	        MENU PRINCIPAL DE ADMINISTRACION 	 |"
+echo "	      |	       DE PROCESOS DEL SERVIDOR DINOAUTOS 	 |"
+echo "	      |		       EMPRESA DINOAUTOS		 |"
+echo " 	       =================================================="
+echo " "
+echo " "
+echo " 	        ================================================"
+echo "	       | > 1.  MENU DE VERIFICACION COPIAS/ACTUALIZACION|"
+echo "	       | > 2.  MENU DE COPIAS DE SEGURIDAD 	        |"
+echo "	       | > 3.  MENU DE PROCESOS ESPECIALES 	        |"
+echo "	       | > 4.  ACTUALIZAR MOVIMIENTO DE CARTERA 	|"
+echo "	       | > 5.  SALIR				        |"
+echo " 	        ================================================"
+echo " "
+echo -e "         OPCION..:#\c  "
+read la
+}
+
+verifica() 
+{
+/u/procesos85/menu1
+menu
+}
+
+copias() 
+{
+/u/procesos85/menu2
+menu
+}
+
+procesos() 
+{
+/u/procesos85/menu3
+menu
+}
+
+cajas() 
+{
+echo " INICIO DE BORRADO DE BASE DE DATOS "
+cd /u/procesos85
+mysql -u root -psistemas < borrarMovimiento.sql
+echo " FIN DE BORRADO DE BASE DE DATOS "
+menu
+}
+
+interfas() 
+{
+/u/procesos85/menu5
+menu
+}
+
+actualizacion()
+{
+/u/procesos85/menuactexpress
+menu
+}
+
+RecepcionarSucursales()
+{
+#/usr/bin/recepcionar_pdv
+#telnet -l transmitir_pdv85 Serexpress
+/u/procesos85/MenuRecepcionSucursales
+menu
+}
+
+
+while :
+do
+  case $la  in
+	1) verifica 		;;
+	2) copias 		;;
+	3) procesos 		;;
+	4) cajas 		;;
+	5) exit			;;
+	*) menu 		;;
+  esac
+done

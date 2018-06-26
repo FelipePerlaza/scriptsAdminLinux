@@ -1,0 +1,16 @@
+echo "#### INICIO DE COPIA ALTERNATIVA A LOS PUNTOS DE VENTAS ###">>/u/reportes/
+fehaCopiasAlternativas/fecha.log
+date >>/u/reportes/fechaCopiasAlternativas/fecha.log
+cd /u/
+#rcp -r uno caja03:/u/copiasAlternativas
+#rcp -r uno caja04:/u/copiasAlternativas
+#rcp -r uno caja05:/u/copiasAlternativas
+echo "#### FIN DE COPIA ALTERNATIVA A LOS PUNTOS DE VENTAS ###">>/u/reportes/
+fehaCopiasAlternativas/fecha.log
+date >>/u/reportes/fechaCopiasAlternativas/fecha.log
+
+
+
+
+
+

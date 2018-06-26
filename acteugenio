@@ -1,0 +1,87 @@
+clear
+echo "Actulizar Catalogos de Cafeteria "
+echo " Inicio de actualizacion de la Cafeteria " 
+echo " Inicio de actualizacion de la Cafeteria " >/u/reporte/logtimeeu
+date "+%B %d %Y  %k:%M:%S" >>/u/reporte/logtimeeu
+echo  "" >>/u/reporte/logtimeeu
+date >/u/reporte/logfileeu
+cona=0
+ncajas=0
+echo " Programa para la actualizacion de Cafeteria"
+	     echo  " Hora de inicio de la Cafeteria " >>/u/reporte/logtimeeu
+             date "+%k:%M:%S" >>/u/reporte/logtimeeu
+	     arcca=0
+             ncajas=`expr $ncajas + 1`
+ 	     for file in `cat /u/procesos/listeu`
+              do
+                    cona=`expr $cona + 1`
+                    arcca=`expr $arcca + 1`
+ 		    echo "Copiando   $file  a la Cafeteria "
+		    rcp -r $file caja20:/u/uno/uno72/eugenio/datos/
+ 		    echo "Copiando  $file a la Cafeteria " >>/u/reporte/logfileeu
+              done
+	     echo  " Hora en que termina la Cafeteria " >>/u/reporte/logtimeeu
+             date "+%k:%M:%S" >>/u/reporte/logtimeeu
+	     echo  "" >>/u/reporte/logtimeeu
+	     echo  "" >>/u/reporte/logtimeeu
+echo " Termina la actualizacion  de la Cafeteria " >>/u/reporte/logtimeeu
+date "+%B %d %Y  %k:%M:%S" >>/u/reporte/logtimeeu
+echo  "" >>/u/reporte/logtimeeu
+clear
+echo ""
+echo ""
+echo ""
+echo ""
+echo ""
+echo " 		Se actualizaron         : $ncajas Caja. "
+echo " 		Archivos por caja       : $arcca "
+echo " 		Total archivos enviados : $cona "
+echo ""
+echo ""
+echo ""
+echo "            Precione enter para continuara"
+read key
+clear
+
+menu()
+{
+clear
+echo "	  	        ESTADO DE LA CAFETERIA "
+echo " "
+echo " "
+echo " "
+echo "		  1. VER TIEMPO DE ACTUALIZACION DE CAFETERIA"
+echo "		  2. VER ARCHIVOS ENVIADDOS A CAFETERIA "
+echo "		  3. SALIR "
+echo " "
+echo " "
+echo "		OPCION....: #  "
+read la
+}
+
+timpcajas()
+{
+more  /u/reporte/logtimeeu
+echo " Precione enter...."
+read key
+menu
+}
+filecajas() 
+{ 
+more /u/reporte/logfileeu
+echo " Precione enter...."
+read key
+menu 
+} 
+menu
+while :
+do
+  case $la  in
+	1) timpcajas 	;;
+	2) filecajas 	;;
+	3) exit 	;;
+	   # trap 1 2 3
+	    #exit 	;;
+	*) exit 	;;
+  esac
+done

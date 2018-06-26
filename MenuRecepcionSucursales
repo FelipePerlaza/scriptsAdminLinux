@@ -1,0 +1,70 @@
+clear
+setterm -background blue
+trap 'echo " Acceso Denegado Att Departamento de Sistemas Software Y Desarrollos ";' 2 3 5
+read Mensaje
+menu()
+{
+clear
+echo " "
+echo " 	       =================================================="	
+echo "	      |	        MENU PRINCIPAL DE RECEPCION DE  	 |"
+echo "	      |	          PDV DE SUCURSALES A CENTRAL 		 |"
+echo "	      |		    SUPERINTER BUENOS AIRES		 |"
+echo " 	       =================================================="
+echo " "
+echo " "
+echo " 	        ================================================"
+echo "	       | > 1.  RECEPCIONAR PDV ROOSVELT	                |"
+echo "	       | > 2.  RECEPCIONAR PDV CIUDAD JARDIN 	        |"
+echo "	       | > 3.  RECEPCIONAR PDV LAS PILAS 	        |"
+echo "	       | > 4.  RECEPCIONAR PDV LA FLORA 		|"
+echo "	       | > 5.  RECEPCIONAR PDV LOS CAMBULOS             |"
+echo "	       | > 6.  SALIR				        |"
+echo " 	        ================================================"
+echo " "
+echo -e "         OPCION..:#\c  "
+read la
+}
+
+recepcionar_pdv_ex()
+{
+#/usr/bin/recepcionar_pdv
+telnet -l transmitir_pdv85 Serexpress
+menu
+}
+
+recepcionar_pdv_cj()
+{
+telnet -l transmitir_pdv85 Seralinstante
+menu
+}
+recepcionar_pdv_lp()
+{
+telnet -l transmitir_pdv85 SerPilas
+menu
+}
+recepcionar_pdv_lf()
+{
+telnet -l transmitir_pdv85 SerFlora
+menu
+}
+recepcionar_pdv_lc()
+{
+telnet -l transmitir_pdv85 SerCambulos
+menu
+}
+
+
+
+while :
+do
+  case $la  in
+	1) recepcionar_pdv_ex 	;;
+	2) recepcionar_pdv_cj	;;
+	3) recepcionar_pdv_lp   ;;
+	4) recepcionar_pdv_lf   ;;
+	5) recepcionar_pdv_lc  ;;
+	6) exit			;;
+	*) menu 		;;
+  esac
+done

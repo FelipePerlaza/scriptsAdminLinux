@@ -1,0 +1,10 @@
+echo "#### INICIO DE COPIA MIRROR ####" > /backup/reportes/fechaMirror.log
+date >> /backup/reportes/fechaMirror.log
+cp -xrfv /u/uno/uno85c/logic /backup/mirror
+cp -xrfv /u/uno/uno85c/dino /backup/mirror
+echo "#### FIN DE COPIA MIRROR #####" >>/backup/reportes/fechaMirror.log
+date >> /backup/reportes/fechaMirror.log
+exit
+
+ 
+

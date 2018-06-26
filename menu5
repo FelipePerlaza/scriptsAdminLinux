@@ -1,0 +1,66 @@
+trap 1 2 3 12 14 15
+menu()
+{
+clear
+echo " "
+echo " "
+echo "		  	MENU DE INTERFACES DE LA SUCURSAL
+                          MERCAINTER A PRINCIPAL SILOE
+			    SUPERINTER SUPERMERCADOS"
+                                     
+echo " "
+echo " "
+echo "			  1. CONECTAR CON SILOE "
+echo "			  2. CONTINGENCIA"
+echo "		 	  3. CONTINGENCIA"
+echo "		 	  4. DESCONECTAR DE SILOE "
+echo "			  5. SALIR "
+echo " "
+echo " "
+echo -e "		OPCION....: # \c  "
+read la
+}
+enviar()
+{
+clear
+	echo "LISTANDO LOS ARCHIVOS EXISTENTES DE LOS CGBATCHX.XXX"
+	cd /u/uno/uno72/inters/interfas/
+	
+	
+menu
+}
+borrar()
+{
+cd /u/uno/uno72/inters/interfas/
+rm -rf CGB*.*
+#rsh -l root 10.10.10.2 /bin/rm -rf /u/uno/uno72/inters/interfas/CGB*.*
+menu
+}
+
+conectar()
+{
+ifup ppp0
+menu
+}
+
+desconectar()
+{
+ifdown ppp0
+menu
+}
+
+clear
+menu
+while :
+do
+  case $la  in
+	1)  conectar 	;;
+	2)  enviar 	;;
+	3)  borrar	;;
+	4)  desconectar	;;
+	5)  clear
+            trap 1 2 3
+	    exit 0	;;
+	*) menu 	;;
+  esac
+done

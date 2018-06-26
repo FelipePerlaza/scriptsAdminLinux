@@ -1,0 +1,13 @@
+echo "###INICIO DE COPIA DE SEGURIDAD###" > /backup/reportes/fechaCopia.log
+date >> /backup/reportes/fechaCopia.log
+_hoy=$(date +"%m_%d_%y")
+cd /u
+tar -czvf /backup/copiaSeguridad/uno.tar.gz uno
+_archivo="uno.tar.gz$_hoy"
+cd /backup/copiaSeguridad
+cp uno.tar.gz "$_archivo"
+rm -rf uno.tar.gz
+echo "###FIN DE COPIA DE SECURIDAD###" >>/backup/reportes/fechaCopia.log
+date >> /backup/reportes/fechaCopia.log
+exit
+

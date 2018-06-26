@@ -1,0 +1,10 @@
+echo "Ingrese el Archivo o Directorio "
+read arch
+echo "Ingrese el Directorio destino "
+read Dest
+for i in `cat /u/procesos/cajnu`;
+do 
+echo "--------- Actualizando  CAJA$i -------  "; 
+rcp -r $arch caja$i:$Dest
+done
+

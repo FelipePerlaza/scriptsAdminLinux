@@ -1,0 +1,15 @@
+echo "INICIO DE ACTUALIZACION DE TABLAS DINO">/backup/reportes/fechaAutoDino.log
+date >> /backup/reportes/fechaAutoDino.log
+cd /u/uno/uno85c/dino
+RUNPATH=/u/uno/uno85c.obj
+TERMINFO=/usr/local/terminfo
+TERM=linux
+TZ=Colombia+5
+export TZ
+export RUNPATH
+export TERMINFO
+export TERM
+runcobol PRCM1125 -C terminfo.cfg -L=libisql.so 
+
+echo "FIN DE ACTUALIZACION DE TABLAS DINO" >> /backup/reportes/fechaAutoDino.log
+date >> /backup/reportes/fechaAutoDino.log

@@ -1,0 +1,10 @@
+clear
+for i in `cat /u/procesos85/cajnu`;
+do 
+echo "--------- RECEPCION DE LA  CAJA$i -------  "; 
+/usr/bin/scp caja$i:/u/uno/uno85c/local/trm/* /u/uno/uno85c/fernando/trm/
+chmod 777 /u/uno/uno85c/fernando/trm/*
+echo "-----   ACTUALIZAR Y LUEGO ENTER PARA CONTINUAR ---------"
+read key
+done
+
