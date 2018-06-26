@@ -5,7 +5,7 @@ clear
 echo "	      -------------------------------------------------"
 echo "	     |	 	 MENU    DE    VERIFICACION 	       |"
 echo "	     |	          DE PROCESOS DE SEGURIDAD 	       |"
-echo "	     |		        DINOAUTOS        	       |"
+echo "	     |		       SUKIPARTES SAS        	       |"
 echo " 	      ------------------------------------------------- "
 echo " "
 echo " 	       -----------------------------------------------"
@@ -49,8 +49,7 @@ menu
 } 
 filecinta() 
 {  
-more /backup/reportes/fechaAutoDino.log
-more /backup/reportes/fechaAutoLogic.log
+more /backup/reportes/autoBiable.log
 echo -e "Oprima enter para continuar ...... \c"
 read key
 menu 
